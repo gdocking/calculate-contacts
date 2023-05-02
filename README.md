@@ -43,5 +43,22 @@ GLN CA B 49 PHE CE1 A 946 4.52
 # ...
 ```
 
+## Troubleshoot
+
+### Running in old CentOS 7
+
+If you are trying to use the compiled binary in an old CentOS7 machine, you might encounter GLIBC issues such as:
+
+```text
+./calculate-contacts: /lib64/libc.so.6: version `GLIBC_2.25' not found (required by ./calculate-contacts)
+./calculate-contacts: /lib64/libc.so.6: version `GLIBC_2.28' not found (required by ./calculate-contacts)
+```
+
+There is no easy way around it, the "simplest" solution is to use `musl` to compile a static binary. There is an amazing [rust-musl-cross](https://github.com/rust-cross/rust-musl-cross) docker image that can make this very simple:
+
+```bash
+$ alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src messense/rust-musl-cross:armv7-musleabihf'
+$ rust-musl-builder cargo build --release
+```
 * * *
 
