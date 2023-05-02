@@ -78,13 +78,13 @@ fn calculate_contacts(pdb: Vec<String>, cutoff: f64) {
                         println!(
                             "{} {} {} {} {} {} {} {} {:.3}",
                             res_a.resname,
-                            atom_a.atomname,
                             res_a.chainid,
                             res_a.resnum,
+                            atom_a.atomname,
                             res_b.resname,
-                            atom_b.atomname,
                             res_b.chainid,
                             res_b.resnum,
+                            atom_b.atomname,
                             dist
                         );
                     }
